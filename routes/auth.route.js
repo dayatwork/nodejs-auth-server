@@ -22,6 +22,7 @@ router.post(
     failureRedirect: "/auth/invalid-credentials",
   }),
   (req, res) => {
+    console.log("user", req.user);
     res.status(200).json({ user: req.user });
   }
 );
