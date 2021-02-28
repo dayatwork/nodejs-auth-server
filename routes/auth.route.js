@@ -21,9 +21,8 @@ router.post(
     // successRedirect: `/profile`,
     failureRedirect: "/auth/invalid-credentials",
   }),
-  (req, res, next) => {
-    console.log("middleware login", req.user);
-    next();
+  (req, res) => {
+    res.status(200).json({ user: req.user });
   }
 );
 
