@@ -87,29 +87,29 @@ function initialize(passport) {
   };
 
   // 2. Google Strategy
-  passport.use(
-    new GoogleStrategy(
-      {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/api/v1/auth/google/callback",
-      },
-      callback
-    )
-  );
+  // passport.use(
+  //   new GoogleStrategy(
+  //     {
+  //       clientID: process.env.GOOGLE_CLIENT_ID,
+  //       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  //       callbackURL: "http://localhost:3000/api/v1/auth/google/callback",
+  //     },
+  //     callback
+  //   )
+  // );
 
   // 3. Facebook Strategy
-  passport.use(
-    new FacebookStrategy(
-      {
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/api/v1/auth/facebook/callback",
-        profileFields: ["id", "displayName", "email", "photos"],
-      },
-      callback
-    )
-  );
+  // passport.use(
+  //   new FacebookStrategy(
+  //     {
+  //       clientID: process.env.FACEBOOK_CLIENT_ID,
+  //       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+  //       callbackURL: "http://localhost:3000/api/v1/auth/facebook/callback",
+  //       profileFields: ["id", "displayName", "email", "photos"],
+  //     },
+  //     callback
+  //   )
+  // );
 
   // 4. Github Strategy
   passport.use(
