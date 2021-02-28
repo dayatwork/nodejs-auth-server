@@ -13,13 +13,17 @@ const authRoutes = require("./routes/auth.route");
 const { protect } = require("./middleware/auth.middleware");
 
 // Middlewares
-app.use(cors()); //development
-// app.use(cors({ origin: "https://nodejs-auth.dayat.dev", credentials: true })); // production
+if (process.env.NODE_ENV === "development") {
+  app.use(cors()); //development
+} else {
+  app.use(cors({ origin: "https://nodejs-auth.dayat.dev", credentials: true })); // production
+}
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
   cookieSession({
-    name: "tuto-session",
+    name: "session",
     keys: ["key1", "key2"],
   })
 );
@@ -46,7 +50,7 @@ app.get("/api/v1/protect", protect, (req, res) => {
 // Routes Middleware
 app.use("/api/v1/auth", authRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
