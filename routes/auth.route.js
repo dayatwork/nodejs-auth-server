@@ -17,14 +17,14 @@ router.post("/register", register);
 // );
 router.post(
   "/login",
+  passport.authenticate("local", {
+    // successRedirect: `/profile`,
+    failureRedirect: "/auth/invalid-credentials",
+  }),
   (req, res, next) => {
     console.log("middleware login", req.user);
     next();
-  },
-  passport.authenticate("local", {
-    successRedirect: `/profile`,
-    failureRedirect: "/auth/invalid-credentials",
-  })
+  }
 );
 
 // ========= Set Password =========
