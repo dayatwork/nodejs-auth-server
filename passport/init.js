@@ -87,16 +87,16 @@ function initialize(passport) {
   };
 
   // 2. Google Strategy
-  // passport.use(
-  //   new GoogleStrategy(
-  //     {
-  //       clientID: process.env.GOOGLE_CLIENT_ID,
-  //       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  //       callbackURL: `${process.env.APP_URI}/api/v1/auth/google/callback`,
-  //     },
-  //     callback
-  //   )
-  // );
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: `${process.env.APP_URI}/api/v1/auth/google/callback`,
+      },
+      callback
+    )
+  );
 
   // 3. Facebook Strategy
   // passport.use(
