@@ -11,7 +11,7 @@ router.post("/register", register);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: `/profile`,
+    successRedirect: `/api/v1/auth/profile`,
     failureRedirect: "/auth/invalid-credentials",
   })
 );
