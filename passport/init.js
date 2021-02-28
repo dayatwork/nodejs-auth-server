@@ -32,6 +32,7 @@ function initialize(passport) {
         ]);
 
         if (!userDB.rows.length) {
+          console.log("user not found");
           return done(null, false, { message: "Invalid Credentials" });
         }
 
@@ -41,6 +42,7 @@ function initialize(passport) {
         );
 
         if (!passwordMatch) {
+          console.log("password not match");
           return done(null, false, { message: "Invalid Credentials" });
         }
 

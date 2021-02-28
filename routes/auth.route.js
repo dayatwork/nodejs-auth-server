@@ -8,8 +8,19 @@ const router = express.Router();
 // ======= Email & Password =======
 router.post("/register", register);
 
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: `/profile`,
+//     failureRedirect: "/auth/invalid-credentials",
+//   })
+// );
 router.post(
   "/login",
+  (req, res, next) => {
+    console.log("middleware login", req.user);
+    next();
+  },
   passport.authenticate("local", {
     successRedirect: `/profile`,
     failureRedirect: "/auth/invalid-credentials",
