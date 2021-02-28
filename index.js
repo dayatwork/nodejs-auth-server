@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 
@@ -13,11 +13,11 @@ const authRoutes = require("./routes/auth.route");
 const { protect } = require("./middleware/auth.middleware");
 
 // Middlewares
-if (process.env.NODE_ENV === "development") {
-  app.use(cors()); //development
-} else {
-  app.use(cors({ origin: "https://nodejs-auth.dayat.dev", credentials: true })); // production
-}
+// if (process.env.NODE_ENV === "development") {
+//   app.use(cors()); //development
+// } else {
+//   app.use(cors({ origin: "https://nodejs-auth.dayat.dev", credentials: true })); // production
+// }
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

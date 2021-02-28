@@ -35,7 +35,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/auth/failed" }),
   function (req, res) {
-    res.redirect(`${process.env.CLIENT_URI}/profile`);
+    res.redirect("/profile");
   }
 );
 
@@ -51,8 +51,7 @@ router.get(
   "/facebook/callback",
   passport.authenticate("facebook", { failureRedirect: "/auth/failed" }),
   (req, res) => {
-    // res.redirect("/profile");
-    res.redirect(`${process.env.CLIENT_URI}/profile`);
+    res.redirect("/profile");
   }
 );
 
@@ -66,7 +65,6 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/auth/failed" }),
   function (req, res) {
-    // res.redirect("/profile");
     res.redirect(`/profile`);
   }
 );
