@@ -47,7 +47,7 @@ app.get("/api/v1/protect", protect, (req, res) => {
   });
 });
 
-// Routes Middleware
+// Routes Middlewares
 app.use("/api/v1/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
