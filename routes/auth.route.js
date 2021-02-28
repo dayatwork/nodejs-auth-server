@@ -15,17 +15,15 @@ router.post("/register", register);
 //     failureRedirect: "/auth/invalid-credentials",
 //   })
 // );
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    // successRedirect: `/profile`,
-    failureRedirect: "/auth/invalid-credentials",
-  }),
-  (req, res) => {
-    console.log("user", req.user);
-    res.status(200).json({ user: req.user });
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  console.log("user", req.user);
+  if (!req.user) {
+    return res.status(400).json({
+      error: "Invalid Credentials",
+    });
   }
-);
+  res.status(200).json({ user: req.user });
+});
 
 // ========= Set Password =========
 router.put("/set-password", protect, setPassword);
