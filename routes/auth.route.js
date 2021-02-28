@@ -11,30 +11,13 @@ router.post("/register", register);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: `/api/v1/profile`,
-    failureRedirect: "/api/v1/auth/invalid-credentials",
+    successRedirect: `/profile`,
+    failureRedirect: "/auth/invalid-credentials",
   })
 );
 
 // ========= Set Password =========
 router.put("/set-password", protect, setPassword);
-// router.put(
-//   "/set-password",
-//   (req, res, next) => {
-//     req.user = {
-//       id: 1,
-//       name: "Muhammad Hidayatullah",
-//       email: "dayatproject@gmail.com",
-//       image_identity:
-//         "https://lh4.googleusercontent.com/-0r4FXPpb5Iw/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuck50RmZNSvYV7lKL1SJaXXDY4vU_A/s96-c/photo.jpg",
-//       username: "dayatproject@gmail.com",
-//       password: null,
-//       registration_date: "2021-02-26T08:09:06.000Z",
-//     };
-//     next();
-//   },
-//   setPassword
-// );
 
 // ============ Google ============
 router.get(
@@ -50,7 +33,7 @@ router.get(
 
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/api/v1/auth/failed" }),
+  passport.authenticate("google", { failureRedirect: "/auth/failed" }),
   function (req, res) {
     res.redirect(`${process.env.CLIENT_URI}/profile`);
   }
@@ -66,7 +49,7 @@ router.get(
 
 router.get(
   "/facebook/callback",
-  passport.authenticate("facebook", { failureRedirect: "/api/v1/auth/failed" }),
+  passport.authenticate("facebook", { failureRedirect: "/auth/failed" }),
   (req, res) => {
     // res.redirect("/profile");
     res.redirect(`${process.env.CLIENT_URI}/profile`);
@@ -81,7 +64,7 @@ router.get(
 
 router.get(
   "/github/callback",
-  passport.authenticate("github", { failureRedirect: "/api/v1/auth/failed" }),
+  passport.authenticate("github", { failureRedirect: "/auth/failed" }),
   function (req, res) {
     // res.redirect("/profile");
     res.redirect(`${process.env.CLIENT_URI}/profile`);

@@ -35,12 +35,10 @@ app.get("/", (req, res) =>
   res.status(200).json({ message: "NodeJS Authentication" })
 );
 
-app.get("/api/v1/profile", (req, res) =>
-  res.status(200).json({ user: req.user })
-);
+app.get("/profile", (req, res) => res.status(200).json({ user: req.user }));
 
 // Protected Route
-app.get("/api/v1/protect", protect, (req, res) => {
+app.get("/protect", protect, (req, res) => {
   res.status(200).json({
     title: "This is a protected page",
     message: "You should  not get access to this page if you are not logged in",
@@ -48,7 +46,7 @@ app.get("/api/v1/protect", protect, (req, res) => {
 });
 
 // Routes Middlewares
-app.use("/api/v1/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 

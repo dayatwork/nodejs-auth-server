@@ -92,7 +92,7 @@ function initialize(passport) {
   //     {
   //       clientID: process.env.GOOGLE_CLIENT_ID,
   //       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  //       callbackURL: "http://localhost:3000/api/v1/auth/google/callback",
+  //       callbackURL: `${process.env.APP_URI}/api/v1/auth/google/callback`,
   //     },
   //     callback
   //   )
@@ -104,7 +104,7 @@ function initialize(passport) {
   //     {
   //       clientID: process.env.FACEBOOK_CLIENT_ID,
   //       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-  //       callbackURL: "http://localhost:3000/api/v1/auth/facebook/callback",
+  //       callbackURL: `${process.env.APP_URI}/api/v1/auth/facebook/callback`,
   //       profileFields: ["id", "displayName", "email", "photos"],
   //     },
   //     callback
@@ -117,7 +117,7 @@ function initialize(passport) {
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/api/v1/auth/github/callback",
+        callbackURL: `${process.env.APP_URI}/api/v1/auth/github/callback`,
       },
       callback
     )
